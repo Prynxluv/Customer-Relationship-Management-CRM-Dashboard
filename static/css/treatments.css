@@ -1,0 +1,232 @@
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
+
+body
+{
+    font-family: "Vollkorn", serif;
+}
+
+
+:root
+{
+    --container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
+    
+    --gutter: 30px;
+    --border-width: 4px;
+    --dot-diameter: 8px;
+
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    --secondary-color: #8e2807;
+    --one-use-color: #8e2807;
+    --two-use-color: #8e2807;
+  
+  
+    --coral: #eb9478;
+    --maroon: #8e2807;
+    --title: #493b76;
+
+}
+
+/* .treatments
+{
+  width: 100%;
+} */
+
+.report-header
+{
+    display: flex;
+    padding: 3px 0 15px 0;
+    height: 35px;
+}
+
+.report-header .recent-Articles
+{
+    color: var(--title);
+    font-size: 25px;
+    text-transform: capitalize;
+    
+}
+
+
+
+.report-header p
+{
+    color: var(--title);
+    font-size: 14px;
+}
+
+.report-header p span
+{
+    color: var(--coral);
+    font-size: 20px;
+    padding: 0 10px;
+    margin: 0 5px 0 0;
+    border-radius: 10px;
+    background: var(--title);
+    text-transform: capitalize;
+}
+
+
+
+
+.timeline {
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    padding: 20px 0px;
+    box-shadow: var(--container-shadow);
+  
+  }
+  
+  .entry {
+    max-width:610px;
+    /* min-width: 500px; */
+    width: 610px;
+    /* height: 300px; */
+    clear: both;
+    text-align: left;
+    position: relative;
+    background: var(--background-color1);
+    /* background: var(--maroon); */
+    padding: 20px 50px 0px 10px;
+    margin: 10px 5px;
+    border-radius: 5px 10px 10px 10px;
+    /* border: 2px solid var(--maroon); */
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+
+    .title {
+      margin-bottom: .5em;
+      float: left;
+      width: 33%;
+      text-align: right;
+      padding: 5px 20px 20px 5px;
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        width: var(--border-width);
+        height: var(--border-width);
+        border: var(--border-width) solid salmon;
+        background-color:#fff;
+        border-radius:100%;
+        top: 15px;
+        right: var(--border-width);
+        z-index: 99;
+      }
+      &::after {
+          content: '';
+          position: absolute;
+          top: -10px;
+          right: 7px;
+          bottom: 0px;
+          width: 2px;
+          height: 200%;
+          background: var(--maroon);
+        }
+  
+
+      h3 {
+        letter-spacing: 2px;
+        line-height: 18px;
+        font-size: 12px;
+        color: var(--maroon);
+      }
+      p {
+        margin: 10px 0 0 0;
+        letter-spacing: 1px;
+        font-size: 12px;
+        color: var(--title);
+        
+      }
+
+
+    }
+    .body {
+      margin: 0 0 15px;
+      float: right;
+      width: 66%;
+      padding-left: 5px;
+      p {
+        padding: 10px 0 0 0;
+        line-height: 20px;
+        letter-spacing: 2px;
+        &:first-child {
+          margin-top: 0;
+          font-weight: 400;
+        }
+      }
+      ul {
+        color: var(--title);
+        font-weight: 400;
+        padding-left: 0;
+        list-style-type: none;
+        li:before {
+          content: "–";
+          margin-right: .5em;
+        }
+      }
+    }
+}
+
+.body .t-name p
+{
+  color: var(--title);
+}
+
+.entry legend
+{
+    color: var(--maroon);
+    width: fit-content;
+    border-bottom: 1px solid var(--maroon);
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+}
+
+.body .t-name
+{
+    color: var();
+    padding: 10px 5px;
+    margin: 0 0 5px 0;
+    border-radius: 5px;
+    background: var(--background-color3);
+}
+
+
+ul div
+{
+    padding: 10px 5px;
+    margin: 0 0 5px 0;
+    border-radius: 5px;
+    background: var(--background-color3);
+}
+  
+
+.timeline .delete
+{
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    margin: 20px 0 0 0;
+    text-align: center;
+    width: 120px;
+    border-radius: 0 10px 10px 10px;
+}
+
+
+.none
+{
+  margin: auto;
+}
+
+
+.none h3
+{
+  color: var(--maroon);
+}
