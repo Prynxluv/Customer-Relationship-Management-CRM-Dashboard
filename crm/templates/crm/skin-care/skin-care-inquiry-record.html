@@ -1,0 +1,89 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %} {{filterset}}'s Skin Care Inquiry Records{% endblock title %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block schedules %}<link rel="stylesheet" href="{% static "css/schedules.css" %}">{% endblock schedules %}
+{% block treatments %}<link rel="stylesheet" href="{% static "css/treatments.css" %}">{% endblock treatments %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+               
+                <div class="report-header">
+                    <h1 class="recent-Articles">All Skin Care Inquiry Records</h1>
+                    <a class="links" href="{% url "create-skin-care-inquiry-record" %}">New Record</a>
+                </div>
+
+                <div class="details-body">
+                    
+                    <div class="timeline">
+
+                        
+                        {% for record in skin_care_inquirys %}
+                            <div class="entry">
+                                <div class="title">
+                                    <a href="{% url "view-skin-care-inquiry-record" record.id %}"><h3> {{filterset}} </h3></a>
+                                    <p>{{record.creation_date}}</p>
+                                </div>
+                                <div class="body">
+                                    <ul>
+                                            <div class="day-time">
+                                            <div class="day"><legend>Hair Coloring</legend><p>{{record.hair_coloring}}</p></div>
+                                            <div class="time"><legend>Scalp Issues</legend><p>{{record.scalp_issues}}</p></div>
+                                            </div>
+                                            <div>
+                                                <div class="t-name">
+                                                    <legend>Hair Coloring Details</legend>
+                                                    <p>{{record.hair_coloring_details|truncatechars:50}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="t-name">
+                                                <legend>Scalp Issues Details</legend>
+                                                <p>{{record.scalp_issues_details|truncatechars:50}}</p>
+                                            </div>
+                                            <div>
+                                                <legend>Skin Allegies</legend>
+                                                <p>{{record.skin_allergy|truncatechars:50}}</p>
+                                            </div>
+                                            <div>
+                                                <legend>Skin Allegies Details</legend>
+                                                <p>{{record.skin_allergy_details|truncatechars:50}}</p>
+                                            </div>
+                                    </ul>
+                                </div>
+                                    <a class="links delete" href="{% url "delete-skin-care-inquiry-record" record.id %}">Delete</a>
+                            </div>
+
+                            
+                        {% endfor %}
+                            
+                    </div>
+                    
+                </div>
+
+
+
+
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}
+
+

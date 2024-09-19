@@ -1,0 +1,104 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}View Customer Information{% endblock title %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block customers_record %}<link rel="stylesheet" href="{% static "css/customers-details.css" %}">{% endblock customers_record %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="details-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">{% for info in information %} {{ info.customer.full_name | upper }} {% endfor %}</h1>
+                
+                <a class="links" href="{% for info in information %}{% url 'view-customer' info.slug %}{% endfor %}">Return</a>
+            </div>
+
+            {% if information %}
+
+                {% for info in information %}
+
+                    <div class="details-body">
+                        
+
+                        <div class="details details-2">
+                            
+                            <div class="details-items">
+                                <legend>Gender</legend>
+                                <h3 class="t-op-nextlvl name">{{info.gender}}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Age</legend>
+                                <h3 class="t-op-nextlvl email">{{ info.age }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Address 1</legend>
+                                <h3 class="t-op-nextlvl phone">{{ info.address_1 }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Address 2</legend>
+                                <h3 class="t-op-nextlvl phone">{{ info.address_2 }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>City</legend>
+                                <h3 class="t-op-nextlvl phone">{{ info.city }}</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="details details-3">
+                            
+                            <div class="details-items">
+                                <legend>County</legend>
+                                <h3 class="t-op-nextlvl phone">{{ info.county }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Postcode</legend>
+                                <h3 class="t-op-nextlvl phone"> {{ info.postcode }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Country</legend>
+                                <h3 class="t-op-nextlvl phone">{{ info.country }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>Date Created</legend>
+                                <h3 class="t-op-nextlvl date">{{ info.creation_date }}</h3>
+                            </div>
+                            <div class="details-items">
+                                <legend>More</legend>
+                                <div class="btns">
+                                        
+                                    {% comment %} <a class="links" href="{% url 'view-customer' info.slug %}">Return</a> {% endcomment %}
+                                    <a class="links" href="{% url 'update-customer-information' info.slug %}">Update</a>
+                                    <a class="links delete" href="{% url 'delete-customer-information' info.slug %}">Delete</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+
+{% endblock content %}

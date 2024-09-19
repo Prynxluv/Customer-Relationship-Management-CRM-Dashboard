@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> {% endcomment %}
+        <title> {% block title %}{% endblock title %} </title>
+
+        <link rel="stylesheet" href="{% static "css/styles.css" %}">
+        <link rel="stylesheet" href="{% static "css/responsive.css" %}">
+        <link rel="stylesheet" href="{% static "css/charts.css" %}">
+        <link rel="stylesheet" href="{% static "css/forms.css" %}">
+        
+
+        {% block cards %}{% endblock cards %}
+        {% block navbar %}{% endblock navbar %}
+        {% block reports %}{% endblock reports %}
+        {% block loyalty %}{% endblock loyalty %}
+        {% block customers %}{% endblock customers %}
+        {% block customers_record %}{% endblock customers_record %}
+        {% block appointment_details %}{% endblock appointment_details %}
+        {% block schedules %}{% endblock schedules %}
+        {% block treatments %}{% endblock treatments %}
+        {% block search %}{% endblock search %}
+        {% block css %}{% endblock css %}
+        
+    </head>
+
+
+    <body>
+
+        {% comment %} ----- HEADER ----- {% endcomment %}
+
+        {% include "crm/header.html" %}
+
+        <div class="main-container">
+
+            {% comment %} ----- INCLUDE NAVIGATION ----- {% endcomment %}
+
+            {% include "crm/navbar.html" %}
+
+            {% comment %} ----- MAIN CONTENT ----- {% endcomment %}
+
+            {% block content %}
+
+
+
+            {% endblock content %}
+
+        </div>
+
+        <script src="{% static 'js/app.js' %}"></script>
+
+    </body>
+
+</html>

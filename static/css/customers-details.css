@@ -1,0 +1,88 @@
+
+:root {
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    --secondary-color: #8e2807;
+    --one-use-color: #8e2807;
+    --two-use-color: #8e2807;
+  
+  
+    --coral: #eb9478;
+    --maroon: #8e2807;
+    --title: #493b76;
+  
+}
+
+
+.details-container
+{
+    width: 100%;
+    margin: 40px 0 0 0;
+}
+
+.details-container .recent-Articles
+{
+    color: var(--title);
+}
+
+.details-body
+{
+    display: flex;
+    margin: 10px 0 0 0;
+}
+
+.details-2
+{
+    width: 50%;
+    margin: 10px 2px 0 0;
+    padding: 10px 20px;
+    background: var(--background-color1);
+    border-radius: 0;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    /* border-right: 1px solid var(--maroon);
+    border-left: 5px solid var(--maroon); */
+    border-radius: 10px 0 0 10px;
+}
+
+
+.details-3
+{
+    width: 50%;
+    margin: 10px 0 0 2px;
+    padding: 10px 20px ;
+    background: var(--background-color1);
+    border-radius: 0;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    /* border-left: 1px solid var(--maroon);
+    border-right: 5px solid var(--maroon); */
+    border-radius: 0  10px 10px 0;
+ 
+}
+
+
+.details-2 .details-items
+{
+    display: flex;
+    border-radius: 10px;
+    margin: 10px 0 10px 0;
+    padding: 10px 20px;
+}
+
+
+.details-3 .details-items
+{
+    display: flex;
+    border-radius: 10px;
+    padding: 10px 20px ;
+    margin: 10px 0 10px 0;
+}
+
+
+.details-items legend
+{
+    text-align: right;
+    width: 100%;
+}
+

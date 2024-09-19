@@ -1,0 +1,228 @@
+{% extends "crm/base.html" %}
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+
+    <div class="searchbar2">
+        <input type="text" 
+               name="" 
+               id="" 
+               placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png" class="icn srchicn" alt="search-button">
+          </div>
+    </div>
+
+    <div class="box-container">
+        <a href="{% url "customers" %}">
+
+            <div class="box box1">
+                <div class="text">
+                    <h2 class="topic-heading">{{total_customers}}</h2>
+                    <h2 class="topic">Customers</h2>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=41551&format=png&color=FFFFFF" alt="Views">
+            </div>
+
+        </a>
+
+        <a href="{% url "booked-appointments" %}">
+            
+            <div class="box box2">
+                <div class="text">
+                    <h2 class="topic-heading">{{booked_appointment}}</h2>
+                    <h2 class="topic">Booked Appointments</h2>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=krMcs2fwUphC&format=png&color=FFFFFF" alt="likes">
+            </div>
+            
+        </a>
+
+        <a href="{% url "reports" %}">
+
+            <div class="box box3">
+                <div class="text">
+                    <h2 class="topic-heading">{{report}}</h2>
+                    <h2 class="topic">Reports</h2>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=cnA8KRIp1RxR&format=png&color=FFFFFF" alt="comments">
+            </div>
+            
+        </a>
+        <a href="{% url "treatments" %}">
+
+            <div class="box box4">
+                <div class="text">
+                    <h2 class="topic-heading">{{total_treatments}}</h2>
+                    <h2 class="topic">Treatments</h2>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=10354&format=png&color=FFFFFF" alt="published">
+            </div>
+            
+        </a>
+
+        <a href="{% url "loyalty" %}">
+            
+            <div class="box box5">
+                <div class="text">
+                    <h2 class="topic-heading">{{loyal_count|length}}</h2>
+                    <h2 class="topic">Loyal Customers</h2>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=98Gf2xmKPI34&format=png&color=FFFFFF" alt="published">
+            </div>
+
+        </a>
+    </div>
+
+
+    <div class="charts">
+
+        <div class="chart-1">
+                                
+            <div class="chart">
+                <label for="">Customers Treatment Chart</label>
+                <canvas id="myChart1"></canvas>
+            </div>
+            
+            <div class="chart">
+                <label for="">Customers Age Chart</label>
+                <canvas id="myChart2"></canvas>
+            </div>
+
+        </div>        
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            
+            <script>
+            const ctx = document.getElementById('myChart1');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: {{label_2|safe}},
+                datasets: [{
+                    label: 'Treatments',
+                    data: {{count_2|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    {% comment %} display: false {% endcomment %}
+                    }
+                }
+                }
+            });
+            </script>
+    
+    
+    
+    
+        <div class="chart-2">
+              
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              
+            <script>
+                const abc = document.getElementById('myChart2');
+            
+                new Chart(abc, {
+                type: 'doughnut',
+                data: {
+                    labels: {{label|safe}},
+                    datasets: [{
+                    label: 'Age',
+                    data: {{data|safe}},
+                    borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true,
+                        display: false
+                    }
+                    }
+                }
+                });
+            </script>
+    
+    
+        </div>
+
+    </div>
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Customers</h1>
+                <!-- <button class="view">View All</button> -->
+                <a class="links" href="{% url "customers" %}">View All</a>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                    <h4 class="t-op date">Date</h4>
+                    <h4 class="t-op views">View</h4>
+                </div>
+
+                <div class="items">
+
+                    {% if customers %}
+
+                        {% for customer in customers %}
+                        
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl name">{{ customer.full_name }}</h3>
+                                <h3 class="t-op-nextlvl email">{{ customer.email }}</h3>
+                                <h3 class="t-op-nextlvl phone">{{ customer.phone }}</h3>
+                                <h3 class="t-op-nextlvl date">{{ customer.creation_date }}</h3>
+                                <h3 class="t-op-nextlvl views label-tag"><a href="{% url 'view-customer' customer.slug %}"><img src="https://img.icons8.com/?size=100&id=13758&format=png&color=FFFFFF" alt=""></a></h3>
+                            </div>
+
+                        {% endfor %}
+                    
+                    {% endif %}
+                
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+        
+    </div>
+        
+</div>
+    
+
+{% endblock content %}

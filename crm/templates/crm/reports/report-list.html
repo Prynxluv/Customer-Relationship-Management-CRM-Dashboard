@@ -1,0 +1,105 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block reports %}<link rel="stylesheet" href="{% static "css/reports.css" %}">{% endblock reports %}
+
+
+{% block content %}
+
+
+<div class="main">
+    <div class="charts">
+
+        {% comment %} <div class="chart-1">
+                                
+            <div class="chart">
+                <label for="">Chart of Report Made by Customers</label>
+                <canvas id="myChart1"></canvas>
+            </div>
+            
+
+        </div>        
+            
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+        const ctx = document.getElementById('myChart1');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: 'Number of Report',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true,
+                display: false
+                }
+            }
+            }
+        });
+        </script> {% endcomment %}
+
+    </div>
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Reports</h1>
+                <a class="links" href="{% url "add-report" %}">Add</a>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Full Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                    <h4 class="t-op message">Message</h4>
+                    <h4 class="t-op date">Date</h4>
+                    <h4 class="t-op views">View</h4>
+                </div>
+
+                <div class="items">
+
+                    {% for report in reports %}
+                    
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl name">{{report.full_name}}</h3>
+                            <h3 class="t-op-nextlvl email">{{report.email}}</h3>
+                            <h3 class="t-op-nextlvl phone">{{report.phone}}</h3>
+                            <h3 class="t-op-nextlvl message">{{report.message|truncatechars:20}}</h3>
+                            <h3 class="t-op-nextlvl date">{{report.creation_date}}</h3>
+                            <h3 class="t-op-nextlvl views label-tag"><a href="{% url "view-report" report.id %}"><img src="https://img.icons8.com/?size=100&id=13758&format=png&color=FFFFFF" alt=""></a></h3>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+        
+    </div>
+
+
+        
+    {% comment %} </div> {% endcomment %}
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

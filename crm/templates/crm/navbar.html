@@ -1,0 +1,98 @@
+{% load static %}
+
+{% block navbar %}<link rel="stylesheet" href="{% static "css/navbar.css" %}">{% endblock navbar %}
+
+{% comment %} ----- NAVIGATION ----- {% endcomment %}
+
+
+<div class="navcontainer">
+    {% if user.is_authenticated %}
+        <nav class="nav">
+            <div class="nav-upper-options">
+                <div class="option1">
+                    <a class="nav-option" href="{% url "dashboard" %}">
+                        <img src="https://img.icons8.com/?size=100&id=11905&format=png&color=FFFFFF" class="nav-img" alt="dashboard">
+                        <h3> Dashboard</h3>
+                    </a>
+                </div>
+
+                <div class="option2">
+                    <a class="nav-option" href="{% url "customers" %}">
+                        <img src="https://img.icons8.com/?size=100&id=11901&format=png&color=FFFFFF" class="nav-img" alt="articles">
+                        <h3> Customers</h3>
+                    </a>
+                </div>
+
+                <div class="option3">
+                    <a class="nav-option" href="{% url "treatments" %}">
+                        <img src="https://img.icons8.com/?size=100&id=18380&format=png&color=FFFFFF" class="nav-img" alt="report">
+                        <h3> Treatments</h3>
+                    </a>
+                </div>
+
+                <div class="dropdown">
+                    <button class="nav-option dropbtn"><img src="https://img.icons8.com/?size=100&id=15685&format=png&color=FFFFFF" class="nav-img" alt="institution"><h3>Appointments</h3></button>
+                    <div class="dropdown-content">
+                        <a class="nav-option dropdown" href="{% url "scheduled-appointments" %}">
+                            <img src="https://img.icons8.com/?size=100&id=13526&format=png&color=FFFFFF" class="nav-img" alt="institution">
+                            <h3>Scheduled Appointments</h3>
+                        </a>
+                        <a class="nav-option dropdown" href="{% url "booked-appointments" %}">
+                            <img src="https://img.icons8.com/?size=100&id=15753&format=png&color=FFFFFF" class="nav-img" alt="institution">
+                            <h3>Booked Appointments</h3>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="option5">
+                    <a class="nav-option" href="{% url "loyalty" %}">
+                        <img src="https://img.icons8.com/?size=100&id=37000&format=png&color=FFFFFF" class="nav-img" alt="blog">
+                        <h3> Loyalty</h3>
+                    </a>
+                </div>
+
+                <div class="option6">
+                    <a class="nav-option" href="{% url "reports" %}">
+                        <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=FFFFFF" class="nav-img" alt="settings">
+                        <h3> Reports</h3>
+                    </a>
+                </div>
+
+                <div class="logout7">
+                    <a class="nav-option" href="{% url "settings" %}">
+                        <img src="https://img.icons8.com/?size=100&id=13118&format=png&color=FFFFFF" class="nav-img" alt="logout">
+                        <h3>Settings</h3>
+                    </a>
+                </div>
+
+
+                <div class="logout">
+                    <a class="nav-option" href="{% url 'logout'%}">
+                        <img src="https://img.icons8.com/?size=100&id=13925&format=png&color=FFFFFF" class="nav-img" alt="logout">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+    {% else %}
+        <nav class="nav">
+            <div class="nav-upper-options">
+                <div class="option1">
+                    <a class="nav-option" href="{% url "register" %}">
+                        <img src="https://img.icons8.com/?size=100&id=11905&format=png&color=FFFFFF" class="nav-img" alt="dashboard">
+                        <h3> Register</h3>
+                    </a>
+                </div>
+
+                <div class="option2">
+                    <a class="nav-option" href="{% url "login" %}">
+                        <img src="https://img.icons8.com/?size=100&id=11901&format=png&color=FFFFFF" class="nav-img" alt="articles">
+                        <h3> Login</h3>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+    {% endif %}
+</div>

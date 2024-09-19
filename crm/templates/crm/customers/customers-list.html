@@ -1,0 +1,130 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block title %}Customer List{% endblock title %}
+
+
+
+{% block content %}
+
+
+<div class="main">
+    <div class="charts">
+
+        <div class="chart-1">
+                                
+            <div class="chart">
+                <label for="">Customers Treatment Chart</label>
+                <canvas id="myChart"></canvas>
+            </div>
+            
+
+        </div>        
+            
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+        <script>
+          const ctx = document.getElementById('myChart');
+        
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: {{label|safe}},
+              datasets: [{
+                label: 'Number of Services',
+                data: {{count|safe}},
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+              ],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  {% comment %} display: false {% endcomment %}
+                }
+              }
+            }
+          });
+        </script>
+        
+        
+        
+
+    </div>
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Customers</h1>
+                <h1 class="recent-Articles">{{total_customers}}</h1>
+                <a class="links" href="{% url "create-customer" %}">Add</a>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                    <h4 class="t-op date">Date</h4>
+                    <h4 class="t-op views">View</h4>
+                </div>
+
+                <div class="items">
+
+                    {% if customers %}
+
+                    {% for customer in customers %}
+                    
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl name">{{ customer.full_name }}</h3>
+                            <h3 class="t-op-nextlvl email">{{ customer.email }}</h3>
+                            <h3 class="t-op-nextlvl phone">{{ customer.phone }}</h3>
+                            <h3 class="t-op-nextlvl date">{{ customer.creation_date }}</h3>
+                            <h3 class="t-op-nextlvl views label-tag"><a href="{% url 'view-customer' customer.slug %}"><img src="https://img.icons8.com/?size=100&id=13758&format=png&color=FFFFFF" alt=""></a></h3>
+                        </div>
+
+                    {% endfor %}
+                
+                {% endif %}
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+        
+    </div>
+
+
+        
+    {% comment %} </div> {% endcomment %}
+
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Report
+                    </h1>
+                    
+                    <div class="full_name">
+                        <label for="full_name">Full Name</label>
+                        {{form.full_name}}
+                    </div>
+                    <div class="contact">
+                        <div>
+                            <label for="email">Email</label>
+                            {{form.email}}
+                        </div>
+                        <div>
+                            <label for="phone">Phone</label>
+                            {{form.phone}}
+                        </div>
+                    </div>
+
+                    <div class="cc-num">
+                        <label for="message">Report</label>
+                        {{form.message}}
+                    </div>
+
+                    <div class="btns">
+                        <button type="submit">Submit </button>
+                        {% comment %} <a class="links" href="">Return</a> {% endcomment %}
+                        
+                    </div>
+                </form>
+            </div>
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends "crm/base.html" %}
+{% block title %}Create Skin Care Report{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Skin Care Report
+                    </h1>
+                    
+                    <div class="full_name">
+                        <label for="full_name">Full Name</label>
+                        {{form.customer}}
+                    </div>
+                    <div class="contact">
+                        <div>
+                            <label for="allergic_reaction">Allergic Reaction</label>
+                            {{form.allergic_reaction}}
+                        </div>
+                        <div>
+                            <label for="proceed_service">Proceed Service</label>
+                            {{form.proceed_service}}
+                        </div>
+                    </div>
+
+                    <div class="cc-num">
+                        <label for="observation">Observation</label>
+                        {{form.observation}}
+                    </div>
+                   
+                    <div class="btns">
+                        <button type="submit">Submit </button>
+                        <a class="links" href="{% url "customers" %}">Customers</a>
+                    </div>
+                </form>
+            </div>
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

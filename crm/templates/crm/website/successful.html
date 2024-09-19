@@ -1,0 +1,20 @@
+{% extends "crm/website/base.html" %}
+{% load static %}
+
+{% block title %}Salon{% endblock title %}
+{% block index %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock index %}
+
+
+{% block content %}
+
+    <div class="title">
+        {% comment %} <h1>Hair Dressing</h1> {% endcomment %}
+
+    </div>
+    <div class="note">
+    <p>
+        {{successful}}
+    </p>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% load static %}
+
+{% block cards %}<link rel="stylesheet" href="{% static "css/cards.css" %}">{% endblock cards %}
+
+
+<div class="card">
+
+       
+
+    {% if user.is_authenticated %}
+
+        {% if not cards %}
+
+            
+
+            <div class="l-card">
+                <a href="{% url "reports" %}">
+                    <section class="l-card__text">
+                        <p>
+                            There are no reports avaliable in the database
+                        </p>
+                    </section>
+                    <section class="l-card__user">
+                        <div class="l-card__userImage">
+                            <img src="https://img.icons8.com/?size=100&id=12163&format=png&color=FFFFFF" alt="Naruto">
+                        </div>
+                        <div class="l-card__userInfo">
+                            <span>...</span>
+                            <span>***</span>
+                        </div>
+                    </section>
+                </a>
+            </div>
+
+            
+
+        {% else %}
+
+        {% for card in cards %}
+
+            <div class="l-card">
+                <a href="{% url "view-report" card.id %}">
+                    <section class="l-card__text">
+                        <p>
+                            {{card.message|truncatechars:50}}
+                        </p>
+                    </section>
+                    <section class="l-card__user">
+                        <div class="l-card__userImage">
+                            <img src="https://img.icons8.com/?size=100&id=12163&format=png&color=FFFFFF" alt="Naruto">
+                        </div>
+                        <div class="l-card__userInfo">
+                            <span>{{card.full_name}}</span>
+                            <span>{{card.creation_date}}</span>
+                        </div>
+                    </section>
+                </a>
+            </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+
+    {% else %}
+
+        <div class="l-card">
+            <a href="">
+                <section class="l-card__text">
+                    <p>
+                        Login to View Information
+                    </p>
+                </section>
+                <section class="l-card__user">
+                    <div class="l-card__userImage">
+                        <img src="https://img.icons8.com/?size=100&id=12163&format=png&color=FFFFFF" alt="Naruto">
+                    </div>
+                    <div class="l-card__userInfo">
+                        <span>...</span>
+                        <span>***</span>
+                    </div>
+                </section>
+            </a>
+        </div>
+
+    {% endif %}
+</div>

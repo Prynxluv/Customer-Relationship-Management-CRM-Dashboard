@@ -1,0 +1,28 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="report-header">
+            <h1 class="recent-Articles">Reset Data</h1>
+            <a class="links" href="{% url "reset" %}">Reset</a>
+        </div>
+        
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <h1 class="warning">This action will permanently delete all data in the database, including the Admin User. Please confirm before proceeding with the RESET, as the data lost cannot be restored.</h1>
+    
+        
+</div>
+
+
+{% endblock content %}

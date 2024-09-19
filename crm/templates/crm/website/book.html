@@ -1,0 +1,66 @@
+{% extends "crm/website/base.html" %}
+{% load static %}
+
+{% block title %}Book an Appointment{% endblock title %}
+{% block index %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock index %}
+{% block book %}<link rel="stylesheet" href="{% static "css/book.css" %}">{% endblock book %}
+{% comment %} {% block book %}<link rel="stylesheet" type="text/css" href="{% static "css/book" %}">{% endblock book %} {% endcomment %}
+
+
+{% block content_2 %}
+    <div class="wrapper">
+        <div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h1>
+                    <i class="fas fa-shipping-fast"></i>
+                    Book Appointment
+                </h1>
+                <br> <br>
+                
+                <div class="full_name">
+                    <label for="full_name">Full Name</label>
+                    {{form.full_name}}
+                </div>
+                <div class="contact">
+                    <div>
+                        <label for="email">Email</label>
+                        {{form.email}}
+                    </div>
+                    <div>
+                        <label for="phone">Phone</label>
+                        {{form.phone}}
+                    </div>
+                </div>
+
+                <div class="address-info">
+                    <div>
+                        <label for="treatment">Treatment</label>
+                        {{form.treatment_name}}
+                    </div>
+                   
+                    <div>
+                        <label for="schedule">Time</label>
+                        {{form.schedule}}
+                    </div>
+                    <div>
+                        <label for="day">Day</label>
+                        {{form.day}}
+                    </div>
+                </div>
+                <div class="cc-num">
+                    <label for="address">Address</label>
+                    {{form.address}}
+                </div>
+                <div class="cc-num">
+                    <label for="message">Message</label>
+                    {{form.message}}
+                </div>
+              
+                <div class="btns">
+                    <button type="submit" >Book</button>                    
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content_2 %}

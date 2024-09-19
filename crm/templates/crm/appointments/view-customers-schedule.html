@@ -1,0 +1,98 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block schedules %}<link rel="stylesheet" href="{% static "css/schedules.css" %}">{% endblock schedules %}
+{% block treatments %}<link rel="stylesheet" href="{% static "css/treatments.css" %}">{% endblock treatments %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+               
+                <div class="report-header">
+                    <h1 class="recent-Articles">Schedules</h1>
+                    <a class="links" href="{% url "schedule-appointment" %}">New Schedule</a>
+                </div>
+
+                <div class="details-body">
+                    
+                    <div class="timeline">
+
+                        {% if customers_schedules %}
+
+                            {% for schedule in customers_schedules %}
+                            
+                                <div class="entry">
+                                    <div class="title">
+                                        <a href="{% url "view-scheduled-appointment" schedule.id %}"><h3>{{schedule.customer}}</h3></a>
+                                        <p>{{schedule.creation_date}}</p>
+                                    </div>
+                                    <div class="body">
+                                        <div class="t-name">
+                                            <legend>Phone</legend>
+                                            <p>{{schedule.customer.phone}}</p>
+                                        </div>
+                                        <ul>
+                                            <div>
+                                                <legend>Email</legend>
+                                                <p>{{schedule.customer.email}}</p>
+                                            </div>
+                                            <div class="day-time">
+                                                <div class="day"><legend>Day</legend><p>{{schedule.day}}</p></div>
+                                                <div class="time"><legend>Time</legend><p>{{schedule.schedule}}</p></div>
+                                            </div>
+                                            <div>
+                                                <legend>Message</legend>
+                                                <p>{{schedule.appointment_note|truncatechars:50}}</p>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <a class="links delete" href="{% url 'delete-customers-schedule' schedule.id %}">Delete</a>
+                                </div>
+
+                            {% endfor %}
+
+                        {% else %}
+                            <div class="">
+                                <legend class="recent-Articles">According to the record, there are no schedules for this Customer</legend>
+                            </div>
+
+                            <h1></h1>
+
+                        {% endif %}
+                        
+
+                    </div>
+                    
+                </div>
+
+
+
+
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+
+<link rel="stylesheet" href="{% static "style.css" %}">
+
+
+
+{% endblock content %}
+
+
+
+

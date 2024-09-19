@@ -1,0 +1,92 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+
+<div class="main">
+    {% comment %} <div class="charts">
+
+        <div class="chart-1">
+                                
+            <div class="chart">
+                <label for="">Dashbord</label>
+                <canvas id="myChart1"></canvas>
+            </div>
+            
+
+        </div>        
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            
+            <script>
+            const ctx = document.getElementById('myChart1');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    display: false
+                    }
+                }
+                }
+            });
+            </script>
+
+    </div> {% endcomment %}
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Booked Appointments</h1>
+                <a class="links" href="{% url "book-appointment" %}">New Booking</a>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                    <h4 class="t-op date">Date</h4>
+                    <h4 class="t-op views">View</h4>
+                </div>
+
+                <div class="items">
+
+                    {% for appointment in booked_appointments %}
+                    
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl name">{{appointment.full_name}}</h3>
+                            <h3 class="t-op-nextlvl email">{{appointment.email}}</h3>
+                            <h3 class="t-op-nextlvl phone">{{appointment.phone}}</h3>
+                            <h3 class="t-op-nextlvl date">{{appointment.creation_date}}</h3>
+                            <h3 class="t-op-nextlvl views label-tag"><a href="{% url "view-booked-appointment" appointment.id %}"><img src="https://img.icons8.com/?size=100&id=13758&format=png&color=FFFFFF" alt=""></a></h3>
+                        </div>
+
+                    {% endfor %}                
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+        
+    </div>
+
+</div>
+
+{% endblock content %}

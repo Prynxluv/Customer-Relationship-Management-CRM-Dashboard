@@ -1,0 +1,78 @@
+{% extends "crm/base.html" %}
+{% block title %}Create Skin Care Inquiry Record{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Skin Care Inquiry
+                    </h1>
+                    
+                    <div>
+                        <label>Customer</label>
+                        {{form.customer}}
+                    </div>
+
+                    <div class="contact">
+                        <div>
+                            <label>Hair Coloring</label>
+                            {{form.hair_coloring}}
+
+                        </div>
+                        <div>
+                            <label for="scalp_issues">Scalp Issues</label>
+                            {{form.scalp_issues}}
+                        </div>
+                    </div>
+
+                    <div class="contact">
+                        <div>
+                            <label>Hair Coloring Details</label>
+                            {{form.hair_coloring_details}}
+                        </div>
+                        <div>
+                            <label for="scalp_issues_details">Scalp Issues Details</label>
+                            {{form.scalp_issues_details}}
+                        </div>
+                    </div>
+
+                    <div class="cc-num">
+                        <label for="skin_allergy">Skin Allergy</label>
+                        {{form.skin_allergy}}
+                    </div>
+
+                    <div class="cc-num">
+                        <label for="skin_allergy_details">Skin Allergies Details</label>
+                        {{form.skin_allergy_details}}                        
+                    </div>
+                    <div class="btns">
+                        <button type="submit">Submit </button>
+                        <a class="links" href="{% url "customers" %}">Customers</a>
+                    </div>
+                </form>
+            </div>
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

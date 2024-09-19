@@ -1,0 +1,96 @@
+
+:root {
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    --secondary-color: #8e2807;
+    --one-use-color: #8e2807;
+    --two-use-color: #8e2807;
+  
+  
+    --coral: #eb9478;
+    --maroon: #8e2807;
+    --title: #493b76;
+  
+}
+
+
+
+.report-header .search
+{
+    color: var(--title);
+    font-size: 24px;
+}
+
+
+.report-header .search span
+{
+    color: var(--maroon);
+}
+
+
+.report-header .results
+{
+    color: var(--title);
+    font-size: 20px;
+}
+
+
+.report-header .results span
+{
+    color: var(--coral);
+    font-size: 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    padding: 5px 0 5px 5px;
+    background: var(--title);
+}
+
+
+.report-body .report-topic-heading
+{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+
+.report-body .items a .item1
+{
+    display: flex;
+    justify-content: space-evenly;
+    transition: .5s all ease-in-out;
+    
+}
+
+.report-body .items a .item1:hover
+{
+    background: var(--title);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.5);
+}
+
+.report-body .items a:focus .item1
+{
+    background: var(--coral);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.9);
+}
+
+.report-body .items a .item1:hover h3
+{
+    color: var(--coral);
+    transition: .5s all ease-in-out;
+}
+
+.report-body .items a:focus .item1 h3
+{
+    color: var(--title);
+    transition: .5s all ease-in-out;
+}
+
+.report-body .items a
+{
+    text-decoration: none;
+
+}
+

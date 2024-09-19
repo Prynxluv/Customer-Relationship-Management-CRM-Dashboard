@@ -1,0 +1,55 @@
+{% extends "crm/base.html" %}
+{% load widget_tweaks %}
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1><i class="fas fa-shipping-fast"></i>Register</h1>
+                    <br>
+                    <div class="full_name">
+                        <label for="full_name">Username</label>
+                        {% render_field form.username placeholder="Username" %}
+                    </div>
+                    <div class="contact">
+                        <div>
+                            <label for="email">Password</label>
+                            {% render_field form.password1 placeholder="Password" %}
+                        </div>
+                        <div>
+                            <label for="email">Confirm Password</label>
+                            {% render_field form.password2 placeholder="Password" %}
+                        </div>
+                    </div>
+      
+                    <div class="btns">
+                        <button type="submit">Register</button>
+                        <a class="links" href="{% url 'login' %}">Login</a>
+                    </div>
+                    <p>love</p>
+                </form>
+            </div>
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

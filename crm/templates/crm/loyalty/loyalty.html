@@ -1,0 +1,136 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block loyalty %}<link rel="stylesheet" href="{% static "css/loyalty.css" %}">{% endblock loyalty %}
+
+
+{% block content %}
+
+
+<div class="main">
+
+    <div class="report-card report-card-bar ">
+
+        <div class="charts">
+
+            <div class="chart-1">
+                                    
+                <div class="chart">
+                    <label for="">Treatment Fequency Chart</label>
+                    <canvas id="myChart1"></canvas>
+                </div>
+
+                <div class="note">
+                    <h3>A list of customers that has at the very least had a Treatement in the firm</h3>
+
+                </div>
+
+                
+
+            </div>        
+                
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                      
+                      <script>
+                        const ctx = document.getElementById('myChart1');
+                      
+                        new Chart(ctx, {
+                          type: 'polarArea',
+                          data: {
+                            labels: {{keys|safe}},
+                            datasets: [{
+                              label: 'Treatment Count',
+                              borderWidth: 1,
+                              data: {{values|safe}},
+                              backgroundColor: [
+                              'rgb(255, 99, 132)',
+                              'rgb(75, 192, 192)',
+                              'rgb(255, 205, 86)',
+                              'rgb(201, 203, 207)',
+                              'rgb(54, 162, 235)'
+                            ]
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true,
+                                display: false
+                              }
+                            }
+                          }
+                        });
+                      </script>
+        
+        
+        
+    
+    
+        </div>
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Loyal Customers</h1>
+                <!-- <button class="view">View All</button> -->
+                {% comment %} <a class="links" href="">View All</a> {% endcomment %}
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op name">Loyalty Level</h4>
+                </div>
+
+                <div class="items">
+
+                    {% if loyal_customers %}
+
+                        {% for loyal_customer in loyal_customers %}
+                    
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl name">{{loyal_customer}}</h3>
+                            </div>
+
+                        {% endfor %}
+
+                        {% comment %} {% for loyal in loyalty %}
+
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl name"> {{loyal}} </h3>
+                        </div>
+    
+                        {% endfor %} {% endcomment %}
+
+                    {% else %}
+                        
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl name">There are no Loyal Customers</h3>
+                        </div>
+
+                    {% endif %}
+
+                    {% comment %} <h3 class="t-op-nextlvl name"> {{loyalty.level}} </h3> {% endcomment %}
+                                        
+                                    
+
+                </div>
+                
+            </div>
+        </div>
+
+        {% include "crm/cards.html" %}
+
+        
+    </div>
+
+
+        
+    {% comment %} </div> {% endcomment %}
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

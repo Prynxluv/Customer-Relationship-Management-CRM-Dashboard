@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock title %}</title>
+	{% block index %}{% endblock index %}
+    {% block book %}{% endblock book %}
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+
+</head>
+<body>
+	<header>
+		<div class="main">
+			<div class="logo">
+				{% comment %} <legend>Hair Dressing</legend> {% endcomment %}
+				<!-- <img src="logo.png"> -->
+			</div>
+		
+			<ul>
+				<li class=""><a href="#"><i class="fa fa-home"></i> Home</a></li>
+				<li><a href="/create website/about.html">About</a></li>
+				<li><a href="/create website/book-appointment.html">Book Appointment</a></li>
+			</ul>
+
+		</div>
+
+        {% block content %}
+
+        {% endblock content %}
+
+	</header>
+    
+
+</body>
+</html>

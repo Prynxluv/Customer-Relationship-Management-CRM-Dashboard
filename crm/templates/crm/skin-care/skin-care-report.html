@@ -1,0 +1,80 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}{{filterset}}'s Skin Care Reports{% endblock title %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block schedules %}<link rel="stylesheet" href="{% static "css/schedules.css" %}">{% endblock schedules %}
+{% block treatments %}<link rel="stylesheet" href="{% static "css/treatments.css" %}">{% endblock treatments %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+               
+                <div class="report-header">
+                    <h1 class="recent-Articles">All Skin Care Reports</h1>
+                    <a class="links" href="{% url "create-skin-care-report" %}">New Report</a>
+                </div>
+
+                <div class="details-body">
+                    
+                    <div class="timeline">
+
+                        {% for report in skin_care_reports %}
+                        
+                            <div class="entry">
+                                <div class="title">
+                                    <a href="{% url "view-skin-care-report" report.id %}"><h3>{{filterset}}</h3></a>
+                                    <p>{{report.creation_date}}</p>
+                                </div>
+                                <div class="body">
+                                    <ul>
+                                        <div>
+                                            <div class="t-name">
+                                                <legend>Allergic Reaction</legend>
+                                                <p>{{report.allergic_reaction}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="t-name">
+                                            <legend>Proceed Service</legend>
+                                            <p>{{report.proceed_service}}</p>
+                                        </div>
+                                        <div>
+                                            <legend>Observation</legend>
+                                            <p>{{report.observation|truncatechars:50}}</p>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <a class="links delete" href="{% url "delete-skin-care-report" report.id %}">Delete</a>
+                            </div>
+
+                        {% endfor %}
+                    
+                    </div>
+                    
+                </div>
+
+
+
+
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}
+
+

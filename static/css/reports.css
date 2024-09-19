@@ -1,0 +1,57 @@
+
+
+
+
+.report-body .name
+
+{
+    width: 20%;
+    height: 50px;
+}
+
+
+.report-body .phone
+
+{
+    width: 10%;
+    height: 50px;
+}
+
+
+.report-body .email
+
+{
+    width: 20%;
+    height: 50px;
+}
+
+
+.report-body .message
+
+{
+    width: 30%;
+    height: 50px;
+    cursor: default;
+}
+
+
+.report-body .date
+
+{
+    width: 25%;
+}
+
+
+.report-body .views
+
+{
+    width:6%;
+    height: 50px;
+}
+
+
+
+
+
+
+

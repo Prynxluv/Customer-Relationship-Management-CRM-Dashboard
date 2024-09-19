@@ -1,0 +1,46 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block customers_record %}<link rel="stylesheet" href="{% static "css/customers-details.css" %}">{% endblock customers_record %}
+{% block appointment_details %}<link rel="stylesheet" href="{% static "css/appointment-details.css" %}">{% endblock appointment_details %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+                <div class="report-header">
+                    <h1 class="recent-Articles">Our Treatment Lists</h1>
+                    <a class="links" href="{% url "add-treatment" %}">New Treatment</a>
+                </div>
+
+                {% for treatment in treatment_lists %}
+
+                    <div class="details details-6">
+                        <div class="details-items">
+                            <h3 class="">{{treatment.treatment_name}}</h3>
+                            <p>{{treatment.extra_note}}</p>
+                        </div>
+                        <div class="">
+                            <div class="btns">
+                                <a class="links delete" href="{% url 'delete-treatment' treatment.id %}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+{% endblock content %}

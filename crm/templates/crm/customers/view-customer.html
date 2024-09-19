@@ -1,0 +1,173 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}View Customer {{customer.full_name}}{% endblock title %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block customers_record %}<link rel="stylesheet" href="{% static "css/customers-details.css" %}">{% endblock customers_record %}
+{% block treatments %}<link rel="stylesheet" href="{% static "css/treatments.css" %}">{% endblock treatments %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="details-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Customers</h1>
+
+                
+                <p><span>{{total_treatment}}</span>  Treatmants </p>
+                {% comment %} <h1 class="recent-Articles">{{total_treatment}}</h1> {% endcomment %}
+                
+                <a class="links" href="{% url "customers" %}">Return</a>
+            </div>
+
+            <div class="details-body">
+                
+
+                <div class="details">
+                    
+                    <div class="details-items">
+                        <legend>Name </legend>
+                        <h3 class="t-op-nextlvl name">{{ customer.full_name }}</h3>
+                    </div>
+                    <div class="details-items">
+                        <legend>Email</legend>
+                        <h3 class="t-op-nextlvl email">{{customer.email}} </h3>
+                    </div>
+                    <div class="details-items">
+                        <legend>Phone</legend>
+                        <h3 class="t-op-nextlvl phone">{{customer.phone}}</h3>
+                    </div>
+                    <div class="details-items">
+                        <legend>Date</legend>
+                        <h3 class="t-op-nextlvl date">{{ customer.creation_date }}</h3>
+                    </div>
+                    <div class="details-items">
+                        <legend>More</legend>
+                    </div>
+
+                </div>
+                
+                {% if total_treatment != 0 %}
+                
+                    <div class="chart">
+                        <label for="">Treatements Undergone</label>
+                        <canvas id="myChart"></canvas>
+                        
+                    </div>
+
+                {% else %}
+
+                <div class="none">
+                    <h3>No Treatment Record</h3>
+                </div>
+
+                {% endif %}
+                
+                
+            </div>
+            
+            
+            <div class="btns">
+                
+
+                <a class="links" href="{% url "update-customer" customer.id %}">Update</a>
+                <a class="links" href="{% url 'view-customer-information' customer.slug %}">Customers Information</a>
+                <a class="links" href="{% url 'skin-care-inquiry-records' customer.slug %}">Skin Inquiry Records</a>
+                <a class="links" href="{% url 'skin-care-report' customer.slug %}">Skin Care Reports</a>
+                <a class="links" href="{% url 'view-treatment' customer.slug %}">Treatments</a> 
+                <a class="links" href="{% url 'view-customers-schedule' customer.slug %}">Schedule</a>
+                <a class="links delete" href="{% url "delete-customer" customer.id %}">Delete</a>
+            </div>
+
+        </div>
+
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: {{label|safe}},
+      datasets: [{
+        label: 'Number of Services',
+        data: {{count|safe}},
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          {% comment %} display: false {% endcomment %}
+        }
+      }
+    }
+  });
+</script>
+
+
+
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        
+    <script>
+    const ctx = document.getElementById('myChart1');
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: {{label|safe}},
+        datasets: [{
+            label: '# of Votes',
+            data: {{count|safe}},
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true,
+            
+            }
+        }
+        }
+    });
+    </script>
+
+
+<script src="scripts.js"></script> {% endcomment %}
+
+
+{% endblock content %}

@@ -1,0 +1,87 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}{{report.customer}}'s Skin Care Report Details{% endblock title %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block customers_record %}<link rel="stylesheet" href="{% static "css/customers-details.css" %}">{% endblock customers_record %}
+{% block appointment_details %}<link rel="stylesheet" href="{% static "css/appointment-details.css" %}">{% endblock appointment_details %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+                <div class="report-header">
+                    <h1 class="recent-Articles">Skin Care Report Details</h1>
+                    <a class="links" href="{% url "create-skin-care-report" %}">New Report</a>
+                </div>
+
+                <div class="details details-5">
+                        
+                        
+                    <div class="details-items">
+                        <legend>Name</legend>
+                        <h3 class="t-oh3-nextlvl phone">{{report.customer}}</p>
+                    </div>
+
+                </div>
+
+                <div class="details-body details-body-2">
+                    
+
+                    <div class="details details-2">
+                        
+                        <div class="details-items">
+                            <legend>Allergic Reaction</legend>
+                            <p class="t-op-nextlvl phone">{{report.allergic_reaction}}</p>
+                        </div>
+                    </div>
+
+                    <div class="details details-3">
+                        
+                        <div class="details-items">
+                            <legend>Proceed Service</legend>
+                            <p class="t-op-nextlvl phone">{{report.proceed_service}}</p>
+                        </div>
+                                            
+
+                    </div>
+
+                    
+                </div>
+                
+                <div class="details details-4">
+
+                    <div class="details-items">
+                        <legend>Observation</legend>
+                        <p class="t-op-nextlvl phone">{{report.observation}}</p>
+                    </div>
+
+                    <div class="">
+                        <div class="btns">
+                            <a class="links delete" href="{% url "delete-skin-care-report" report.id %}">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                
+
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+
+{% endblock content %}

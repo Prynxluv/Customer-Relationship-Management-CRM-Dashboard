@@ -1,0 +1,49 @@
+{% extends "crm/base.html" %}
+{% load static %}
+
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block customers_record %}<link rel="stylesheet" href="{% static "css/customers-details.css" %}">{% endblock customers_record %}
+{% block appointment_details %}<link rel="stylesheet" href="{% static "css/appointment-details.css" %}">{% endblock appointment_details %}
+
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+ 
+            <div class="details-container">
+
+                <div class="report-header">
+                    <h1 class="recent-Articles">Record Exits</h1>
+                    <a class="links" href="">New Record</a>
+                </div>
+
+                <div class="details details-6">
+                        
+                        
+                    <div class="details-items">
+                        {% comment %} <legend>Name</legend> {% endcomment %}
+                        <h3 class="t-oh3-nextlvl phone">{{error_message}}</p>
+                    </div>
+
+                </div>
+
+
+
+                
+
+
+            </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

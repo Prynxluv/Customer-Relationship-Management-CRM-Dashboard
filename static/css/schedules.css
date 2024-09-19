@@ -1,0 +1,87 @@
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn&display=swap");
+
+body
+{
+    font-family: "Vollkorn", serif;
+}
+
+
+:root
+{
+    --container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
+    
+    --gutter: 30px;
+    --border-width: 4px;
+    --dot-diameter: 8px;
+
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    --secondary-color: #8e2807;
+    --one-use-color: #8e2807;
+    --two-use-color: #8e2807;
+  
+  
+    --coral: #eb9478;
+    --maroon: #8e2807;
+    --title: #493b76;
+
+}
+
+
+.entry .title a
+{
+  text-decoration: none;
+}
+
+
+.entry .title a h3
+{
+  border-radius: 5px;
+  margin: 0 0 5px 0;
+  background: var(--coral);
+  padding: 2px;
+  transition: .5s all ease-in-out;
+}
+
+
+.entry .title a h3:hover
+{
+  color: var(--background-color1);
+  background: var(--maroon);
+}
+
+
+ul .day-time
+{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+
+ul .day-time .day
+{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-content: center;
+}
+
+
+ul .day-time .time
+{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+ul .day-time .time legend
+{
+align-self: flex-end;
+}
+

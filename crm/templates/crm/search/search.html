@@ -1,0 +1,115 @@
+{% extends "crm/base.html" %}
+
+{% load static %}
+{% block search %}<link rel="stylesheet" href="{% static "css/search-results.css" %}">{% endblock search %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles search">SEARCH -> <span>Prince Loveday</span></h1>
+                
+                {% if customers_names %}
+                    <p class="results"><span>{{count_names }}</span> Name Results</p>
+
+                {% elif customers_emails %}
+                    <p class="results"><span>{{count_emails}}</span> Email Results</p>
+                
+                {% elif customers_phones %}
+                    <p class="results"><span>{{count_phones}}</span> Phone Results</p>
+                {% endif %}
+
+            </div>
+
+            
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                </div>
+
+                <div class="items">
+                    
+                    {% if customers_names %}
+
+                        {% for name in customers_names %}
+                        
+                            <a href="{% url "view-customer" name.slug %}">
+                                <div class="item1">
+                                    <h3 class="t-op-nextlvl name">{{name.full_name}}</h3>
+                                    <h3 class="t-op-nextlvl email">{{name.email}}</h3>
+                                    <h3 class="t-op-nextlvl phone">{{name.phone}}</h3>
+                                </div>
+                            </a>
+
+                        {% endfor %}
+
+                    {% elif customers_emails %}
+
+                        {% for email in customers_emails %}
+                    
+                        <a href="{% url "view-customer" email.slug %}">
+                                <div class="item1">
+                                    <h3 class="t-op-nextlvl name">{{email.full_name}}</h3>
+                                    <h3 class="t-op-nextlvl email">{{email.email}}</h3>
+                                    <h3 class="t-op-nextlvl phone">{{email.phone}}</h3>
+                                </div>
+
+                            </a>
+
+                        {% endfor %}
+
+                    {% elif customers_phones %}
+
+                        {% for phone in customers_phones %}
+                    
+                        <a href="{% url "view-customer" phone.slug %}">
+
+                                <div class="item1">
+                                    <h3 class="t-op-nextlvl name">{{phone.full_name}}</h3>
+                                    <h3 class="t-op-nextlvl email">{{phone.email}}</h3>
+                                    <h3 class="t-op-nextlvl phone">{{phone.phone}}</h3>
+                                </div>
+                            </a>
+
+                        {% endfor %}
+
+                    {% else %}
+
+
+                        <a href="">
+
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl name">No results found</h3>
+                                <h3 class="t-op-nextlvl email">No results found</h3>
+                                <h3 class="t-op-nextlvl phone">No Results found</h3>
+                            </div>
+                        </a>
+                        
+
+                    {% endif %}
+
+
+                 
+
+                </div>
+                
+            </div>
+        </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

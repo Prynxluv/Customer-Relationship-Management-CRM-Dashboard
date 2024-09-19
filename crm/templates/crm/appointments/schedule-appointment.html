@@ -1,0 +1,68 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Schedule Appointment
+                    </h1>
+                    
+                    <div class="full_name">
+                        <label for="full_name">Full Name</label>
+                        {{form.customer}}
+                    </div>
+
+                    <div class="address-info">
+                        <div>
+                            <label for="treatment">Treatment</label>
+                            {{form.treatment_name}}
+                        </div>
+                        <div>
+                            <label for="schedule">Time</label>
+                            {{form.schedule}}
+                        </div>
+                        <div>
+                            <label for="day">Day</label>
+                            {{form.day}}
+                        </div>
+                    </div>
+                   
+                    <div class="cc-num">
+                        <label for="card-num">Appointment Note</label>
+                        {{form.appointment_note}}
+                    </div>
+                    
+                    <div class="btns">
+                        <button type="submit" >Proceed</button>
+                        <a class="links" href="{% url "scheduled-appointments" %}">Return</a>
+                        
+                    </div>
+                </form>
+            </div>
+
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+<script src="scripts.js"></script>
+
+
+{% endblock content %}

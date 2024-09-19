@@ -1,0 +1,77 @@
+{% extends "crm/base.html" %}
+
+{% load static %}
+{% block customers %}<link rel="stylesheet" href="{% static "css/customers.css" %}">{% endblock customers %}
+{% block schedules %}<link rel="stylesheet" href="{% static "css/schedules.css" %}">{% endblock schedules %}
+{% block treatments %}<link rel="stylesheet" href="{% static "css/treatments.css" %}">{% endblock treatments %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card treatments">
+
+        <div class="details-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">{{filterset}}</h1>
+                <p><span>{{loyalty}}</span>  Treatmants </p>
+                <p>Loyalty Level <span>{{loyal}}</span></p> 
+                <a class="links" href="{% url "add-customers-treatment" %}">Add Treatment</a>
+            </div>
+
+            <div class="details-body">
+                
+                <div class="timeline">
+                    
+                    {% if customers_treatments %}
+
+                        {% for treatment in customers_treatments %}
+                            <div class="entry">
+                                <div class="title">
+                                    <a href="{% url "treatment-details" treatment.id %}"><h3>{{filterset}}</h3></a>
+                                    <p>{{treatment.customer.creation_date}}</p>
+                                </div>
+                                <div class="body">
+                                    <div class="t-name">
+                                        <legend>Treatmant Name</legend>
+                                        <p>{{treatment.treatment_list}}</p>
+                                    </div>
+                                    <ul>
+                                        <div>
+                                            <legend>Treatment Details</legend>
+                                            <p> {{treatment.treatment_list.extra_note}}</p>
+                                        </div>
+                                        <div>
+                                            <legend>Trestment Summery</legend>
+                                            <p>{{treatment.treatment_note}}</p>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <a class="links delete" href="{% url 'delete-customers-treatment' treatment.id %}">Delete</a>
+                            </div>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div>
+                            <h3>There are no Treatmants Records for this Customer</h3>
+                        </div>
+                    
+                    {% endif %} 
+                </div>
+                
+            </div>
+            
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,87 @@
+
+:root {
+    --background-color1: #fafaff;
+    --background-color2: #ffffff;
+    --background-color3: #ededed;
+    --background-color4: #cad7fda4;
+    /* --primary-color: #4b49ac; */
+    --secondary-color: #8e2807;
+    /* --Border-color: #3f0097; */
+    --one-use-color: #8e2807;
+    --two-use-color: #8e2807;
+  
+  
+    --coral: #eb9478;
+    --maroon: #8e2807;
+    --title: #493b76;
+  
+}
+
+
+.report-card-bar .charts
+{
+    position: relative;
+    width: 33%;
+}
+
+
+.report-card-bar .chart-1
+{
+    position: fixed;
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+}
+
+
+.report-card-bar .chart-1 .note
+{
+    width: 100%;
+    margin: 50px 0 0 10px ;
+}
+
+
+.report-card-bar .chart-1 .note h3
+{
+    width: 100%;
+    background-color: var(--title);
+    color: var(--coral);
+    border-radius: 10px;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    text-transform: capitalize;
+    padding: 25px 30px 50px 20px;
+    border: 2px solid var(--background-color1);
+    box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+    transition: .5s all ease-in-out;
+}
+
+
+.report-card-bar .chart-1 .note h3:hover
+{
+
+    background-color: var(--background-color1);
+    color: var(--maroon);
+
+
+}
+
+
+.report-card-bar .report-container
+{
+    width: 50%;
+    margin-left: 30px;
+}
+
+
+.report-card-bar .report-container .report-body
+{
+    width: 100%;
+}
+
+
+.report-card-bar .report-container .report-body .items
+{
+    width: 100%;
+}
+

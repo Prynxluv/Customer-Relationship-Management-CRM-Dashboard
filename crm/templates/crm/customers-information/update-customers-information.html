@@ -1,0 +1,87 @@
+{% extends "crm/base.html" %}
+{% block title %}Update Customer Information{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Update Information
+                    </h1>
+
+                    <div class="customers">
+                        <label for="customer">Customer's </label>
+                        <input type="text" name="" value="{{name}}" disabled>
+                       
+                    </div>
+
+                    <div class="contact">
+                                                    
+                        <div class="age">
+                            <label for="email">Gender </label>
+                            {{form.gender}}
+                        </div>
+                        <div>
+                            <label for="age">Age</label>
+                            {{form.age}}
+                        </div>
+        
+                    </div>
+
+                    <h3>
+                        <i class="far fa-credit-card"></i> Customer's Address
+                    </h3>
+                    <div class="contact">
+                        <div>
+                            <label for="address_1">Address 1</label>
+                            {{form.address_1}}
+                        </div>
+                        <div>
+                            <label for="address_2">Address 2</label>
+                            {{form.address_2}}
+                        </div>
+                    </div>
+                    <div class="address-info">
+                        <div>
+                            <label for="city">City</label>
+                            {{form.city}}
+                        </div>
+                        <div>
+                            <label for="county">County</label>
+                            {{form.county}}
+                        </div>
+                        <div>
+                            <label for="postcode">Postcode</label>
+                            {{form.postcode}}
+                        </div>
+                    </div>
+                    <div class="country">
+                        <label for="Country">Country</label>
+                        {{form.country}}
+                    </div>
+                    <div class="btns">
+                        <button type="submit">Save </button>
+                        <a class="links" href="{% url "view-customer-information" information.slug %}">Return</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

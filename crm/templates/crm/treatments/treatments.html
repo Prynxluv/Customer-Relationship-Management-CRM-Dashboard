@@ -1,0 +1,135 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+<div class="main">
+
+   <div class="charts">
+
+        <div class="chart-1">
+                                
+            <div class="chart">
+                <label for="">Treatment Popularity</label>
+                <canvas id="myChart1"></canvas>
+            </div>
+            
+            <div class="chart">
+                <label for="">Treatment Chart</label>
+                <canvas id="myChart2"></canvas>
+            </div>
+
+        </div>        
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            
+            <script>
+            const ctx = document.getElementById('myChart1');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: {{label|safe}} ,
+                datasets: [{
+                    label: 'Treatments',
+                    data: {{count|safe}},
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    display: false
+                    }
+                }
+                }
+            });
+            </script>
+    
+    
+    
+    
+        <div class="chart-2">
+              
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              
+            <script>
+                const abc = document.getElementById('myChart2');
+            
+                new Chart(abc, {
+                type: 'doughnut',
+                data: {
+                    labels: {{keys|safe}},
+                    datasets: [{
+                    label: 'No of Treatment',
+                    data: {{values|safe}},
+                    borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true,
+                        display: false
+                    }
+                    }
+                }
+                });
+            </script>
+    
+    
+        </div>
+
+    </div>
+
+    <div class="report-card">
+
+        <div class="report-container">
+
+            <div class="report-header">
+                <h1 class="recent-Articles">Treatments</h1>
+                <!-- <button class="view">View All</button> -->
+                <a class="links" href="{% url "add-customers-treatment" %}">Add</a>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h4 class="t-op name">Name</h4>
+                    <h4 class="t-op email">Email</h4>
+                    <h4 class="t-op phone">Phone</h4>
+                    <h4 class="t-op date">Date</h4>
+                    <h4 class="t-op views">View</h4>
+                </div>
+
+                <div class="items">
+
+                    {% if treatments %}
+
+                        {% for treatment in treatments %}
+                        
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl name">{{treatment.customer.full_name}}</h3>
+                                <h3 class="t-op-nextlvl email">{{treatment.treatment_list}}</h3>
+                                <h3 class="t-op-nextlvl phone">{{treatment.treatment_note|truncatechars:15}}</h3>
+                                <h3 class="t-op-nextlvl date">{{treatment.creation_date}}</h3>
+                                <h3 class="t-op-nextlvl views label-tag"><a href="{% url 'treatment-details' treatment.id %}"><img src="https://img.icons8.com/?size=100&id=13758&format=png&color=FFFFFF" alt=""></a></h3>
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+     
+
+                </div>
+                
+            </div>
+        </div>
+
+        {% include "crm/cards.html" %}
+        
+    </div>
+        
+</div>
+    
+
+{% endblock content %}

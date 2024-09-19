@@ -1,0 +1,48 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+<div class="main">
+
+
+    <div class="report-card">
+
+        <div class="wrapper">
+
+ 
+
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h1>
+                        <i class="fas fa-shipping-fast"></i>
+                        Add Treatment
+                    </h1>
+                    
+                    <div class="full_name">
+                        <label for="treatment_name">Treatment Name</label>
+                        {{form.treatment_name}}
+                    </div>
+                    
+                    <div class="full_name">
+                        <label for="treatment_note">Treatment Note</label>
+                        {{form.extra_note}}
+                    </div>
+                 
+                    <div class="btns">
+                        <button type="submit">Submit </button>
+                        <a class="links" href="">Return</a>
+                    </div>
+                </form>
+            </div>
+
+            
+            
+        </div>
+        {% include "crm/cards.html" %}
+        
+    </div>
+
+</div>
+
+{% endblock content %}
