@@ -2,7 +2,7 @@
 Masters Project on a Customer Relationship Management (CRM) Dashboard
 
 
-# Hairdressing Business Management System
+## Hairdressing Business Management System
 
 This project is a **Hairdressing Business Management System** designed to help small-scale hairdressing businesses streamline their operations by improving data management, enhancing record-keeping, and offering real-time insights. The system enables efficient handling of customer information, appointment bookings, treatments, and more through a user-friendly platform.
 
@@ -138,7 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Note: The current database uses the following credentials – **Username:** admin, **Password:** admin.
+*Note: The current database uses the following credentials – **Username:** admin, **Password:** admin.*
 
 
 
